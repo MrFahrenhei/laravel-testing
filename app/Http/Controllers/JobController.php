@@ -11,25 +11,36 @@ use Illuminate\View\View;
 // php artisan make:controller JobController --resource
 class JobController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * @desc Display a listing of jobs.
+     * @route GET /jobs
+     * @method GET
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
        $jobs = Job::all();
         return view('jobs.index')->with('jobs', $jobs);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @desc Display a create job form.
+     * @route GET /jobs/create
+     * @method GET
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('jobs.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @desc Save job to database.
+     * @route POST /jobs
+     * @method POST
+     * @return RedirectResponse
+     * @param Request $request
      */
     public function store(Request $request): RedirectResponse
     {
@@ -69,7 +80,11 @@ class JobController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @desc Display a single job.
+     * @route GET /job/{$id}
+     * @method GET
+     * @param Job $job
+     * @return View
      */
     public function show(Job $job): View
     {
@@ -77,7 +92,11 @@ class JobController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @desc Show edit form for a single job.
+     * @route GET /job/{$id}/edit
+     * @method GET
+     * @param Job $job
+     * @return View
      */
     public function edit(Job $job): View
     {
@@ -85,7 +104,12 @@ class JobController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @desc Update job information
+     * @route  PUT /job/{$id}
+     * @method PUT
+     * @param Request $request
+     * @param Job $job
+     * @return string
      */
     public function update(Request $request, Job $job): string
     {
@@ -121,7 +145,11 @@ class JobController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @desc Delete a job
+     * @route DELETE /job/{$id}
+     * @method DELETE
+     * @param Job $job
+     * @return RedirectResponse
      */
     public function destroy(Job $job): RedirectResponse
     {
