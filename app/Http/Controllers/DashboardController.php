@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Job;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+
+class DashboardController extends Controller
+{
+    /**
+     * @desc Show all users job listings
+     * @route GET /dashboard
+     * @method GET
+     * @return View
+     */
+    public function index(): View
+    {
+        // get logged in user
+        $user = Auth::user();
+
+        // get the user listing
+        $jobs = Job::where('user_id', $user->id)->get();
+        return view('dashboard.index', compact('user', 'jobs'));
+    }
+}
