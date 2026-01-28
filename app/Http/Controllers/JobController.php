@@ -22,7 +22,8 @@ class JobController extends Controller
      */
     public function index(): View
     {
-       $jobs = Job::all();
+//       $jobs = Job::all();
+        $jobs = Job::paginate(9);
         return view('jobs.index')->with('jobs', $jobs);
     }
 
