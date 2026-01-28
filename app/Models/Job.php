@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Database\Factories\JobFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Job extends Model
 {
-    /** @use HasFactory<\Database\Factories\JobFactory> */
+    /** @use HasFactory<JobFactory> */
     use HasFactory;
     protected $table = 'job_listing';
     protected $fillable = ['title', 'description', 'salary', 'tags', 'job_type', 'remote', 'requirements',
@@ -19,5 +21,10 @@ class Job extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function bookmarkedByUsers(): BelongsToMany
+    {
+       return $this->belongsToMany(User::class, 'job_user_bookmarks')->withTimestamps();
     }
 }

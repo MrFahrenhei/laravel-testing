@@ -6,4 +6,7 @@
             <p>Sem trabaio</p>
         @endforelse
     </div>
+{{$jobs->links()}}
+{{--Para modificar paginação precia deste comando--}}
+{{--php artisan vendor:publish --tag=laravel-pagination --}}
 </x-layout>

@@ -22,7 +22,8 @@ class JobController extends Controller
      */
     public function index(): View
     {
-       $jobs = Job::all();
+//       $jobs = Job::all();
+        $jobs = Job::latest()->paginate(9);
         return view('jobs.index')->with('jobs', $jobs);
     }
 
@@ -163,6 +164,12 @@ class JobController extends Controller
             Storage::delete('public/logos/', $job->company_logo);
         }
         $job->delete();
+
+        // check if request came from dashboard
+        if(request()->query('from') == 'dashboard'){
+            return redirect()->route('dashboard')->with('success', 'Job deleted successfully!');
+        }
+
         return redirect()->route('jobs.index')->with('success', 'Job deleted successfully!');
     }
 }
