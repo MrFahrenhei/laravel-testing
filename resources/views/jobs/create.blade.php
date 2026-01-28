@@ -14,7 +14,8 @@
                 <x-inputs.text-area id="requirements" name="requirements" label="Requirements" placeholder="Bachelor's degree in Computer Science" />
                 <x-inputs.text-area id="benefits" name="benefits" label="Benefits" placeholder="Health insurance, 401k, paid time off"/>
                 <x-inputs.text id="tags" name="tags" label="Tags (comma-separated)" placeholder="development, coding, java, python"/>
-                <x-inputs.select id="job_type" name="job_type" label="Job Type" value="{{old('job_type')}}" :options="['Full-Time' => 'Full-Time', 'Part-Time' => 'Part-Time', 'Contract' => 'Contract', 'Temporary' => 'Temporary', 'Internship' => 'Internship', 'Volunteer' => 'Volunteer', 'On-Call' => 'On-Call']" />
+                <x-inputs.select id="job_type" name="job_type" label="Job Type" value="{{old('job_type')}}"
+                                 :options="['Full-Time' => 'Full-Time', 'Part-Time' => 'Part-Time', 'Contract' => 'Contract', 'Temporary' => 'Temporary', 'Internship' => 'Internship', 'Volunteer' => 'Volunteer', 'On-Call' => 'On-Call']" />
                 <x-inputs.select id="remote" name="remote" label="Remote" :options="[0 => 'No', 1 => 'Yes']" />
                 <x-inputs.text id="address" name="text" label="Address" placeholder="123 Main St"/>
                 <x-inputs.text id="city" name="city" label="City" placeholder="Albany"/>
@@ -27,9 +28,7 @@
                 <x-inputs.text id="contact_phone" name="contact_phone" label="Contact Phone" placeholder="Enter Contact Phone"/>
                 <x-inputs.text id="contact_email" name="contact_email" label="Contact Email" type="email" placeholder="Email where you want to receive applications"/>
                 <x-inputs.file id="company_logo" name="company_logo" label="Company Logo" />
-                <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 my-3 rounded focus:outline-none">
-                    Save
-                </button>
+                <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 my-3 rounded focus:outline-none">Save</button>
             </form>
         </div>
     </main>
