@@ -13,6 +13,7 @@ use App\Http\Controllers\JobController;
 // npm run dev -> vite
 // npm run build -> build the frontend
 // php artisan serve -> run laravel server
+// php artisan storage:link
 /*
 Laravel authentications
 Laravel Breeze - Easy to use starter kit
