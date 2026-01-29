@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 
 // npm run dev -> vite
+// npm run build -> build the frontend
 // php artisan serve -> run laravel server
 /*
 Laravel authentications
@@ -21,7 +22,7 @@ Laravel Sanctum - API authentication
 Socialite - Use OAuth with providers (Facebook, Google, etc.)
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
-//Route::resource('jobs', JobController::class);
+Route::get('/jobs/search', [JobController::class, 'search'])->name('jobs.search');
 Route::resource('jobs', JobController::class)->middleware('auth')->only(['create', 'edit', 'update', 'destroy' ]);
 Route::resource('jobs', JobController::class)->except(['create', 'edit', 'update', 'destroy' ]);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
